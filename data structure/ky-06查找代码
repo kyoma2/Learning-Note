@@ -1,0 +1,17 @@
+--查找--
+1.折半查找.
+  int BinarySeach(seqlist L,Elemtype key){
+      int low =0; high = L.lenght-1;
+      int mid;
+      while (low<=high){ // 等于符号成立,相等意味着区间就是同一个.
+          mid = (low+high)/2;
+          if (seqlist[mid]== key)
+              return 1;
+          if (seqlist[mid]>key)
+              high = mid-1;
+          if (seqlist[mid]<key)
+              low = mid+1
+      }
+      return 0;
+
+  }
