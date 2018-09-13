@@ -33,17 +33,24 @@ Vnode-->ArcNode;
   }
   
   
-  --dfs--
-  """没什么特别的,递归逻辑就是([访问,找下一个点],repeat)"""
-    void dfs(Graph G,int v) {
-      visit(v);
-      visited[v] = 1;
-      for (auto p = G.adjlist[v].firstarc,p,p=p->nextarc){
-          n = p->adjvex;
-          if (visited[n] == 0){
-              dfs(G,n);
-          }
-      }
-  }
+--dfs--
+"""没什么特别的,递归逻辑就是([访问,找下一个点],repeat)"""
+  void dfs(Graph G,int v) {
+    visit(v);
+    visited[v] = 1;
+    for (auto p = G.adjlist[v].firstarc,p,p=p->nextarc){
+        n = p->adjvex;
+        if (visited[n] == 0){
+            dfs(G,n);
+        }
+    }
+}
   
+--最小生成树--
+1.prim(普里姆算法):找已有图最近的下一步
+2.Kruskal(克鲁斯卡尔):找所有点之间的距离,把最短的距离两两相连,在把两个连好的看成一个点,再重复.(适合边少点多)
+
+--最短路径--
+指的是AB两点,带权路径最小的那条.
+
 
