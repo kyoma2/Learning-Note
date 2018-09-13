@@ -1,4 +1,38 @@
 图的遍历
+
+--bfs--
+"""完全当做层次遍历(队列),需注意不是连通图,所以需要套一层循环,扫描每个点是否被访问过."""
+  void *bfs(Graph G,int v) {
+      visit(v);  
+      visited[v] = 1;
+      EnQueue(v);
+      While(!empty(Queue)){
+          for (auto p = G.Adjlist[v].firstarc, p ,p=p->nextarc){
+              n = p->adjvex;
+              if (visited[n] == 0){
+                  visit(n);
+                  visited[n] = 1;
+                  EnQueue(Q,n);
+              }
+          }
+      }
+  }
+
+
+--dfs--
+"""没什么特别的,递归逻辑就是([访问,找下一个点],repeat)"""
+  void dfs(Graph G,int v) {
+    visit(v);
+    visited[v] = 1;
+    for (auto p = G.adjlist[v].firstarc,p,p=p->nextarc){
+        n = p->adjvex;
+        if (visited[n] == 0){
+            dfs(G,n);
+        }
+    }
+}
+
+
 --dfs迭代--
 """按照二叉树的前序非递归遍历,就是多加一个visited标记判断."""
   void dfs(Graph G,int v) {
