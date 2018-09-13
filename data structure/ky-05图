@@ -15,42 +15,22 @@ Vnode-->ArcNode;
 
 --图的遍历--
 --bfs--
-"""完全当做层次遍历(队列),需注意不是连通图,所以需要套一层循环,扫描每个点是否被访问过."""
-  void *bfs(Graph G,int v) {
-      visit(v);  
-      visited[v] = 1;
-      EnQueue(v);
-      While(!empty(Queue)){
-          for (auto p = G.Adjlist[v].firstarc, p ,p=p->nextarc){
-              n = p->adjvex;
-              if (visited[n] == 0){
-                  visit(n);
-                  visited[n] = 1;
-                  EnQueue(Q,n);
-              }
-          }
-      }
-  }
-  
-  
 --dfs--
-"""没什么特别的,递归逻辑就是([访问,找下一个点],repeat)"""
-  void dfs(Graph G,int v) {
-    visit(v);
-    visited[v] = 1;
-    for (auto p = G.adjlist[v].firstarc,p,p=p->nextarc){
-        n = p->adjvex;
-        if (visited[n] == 0){
-            dfs(G,n);
-        }
-    }
-}
-  
+
+
 --最小生成树--
 1.prim(普里姆算法):找已有图最近的下一步
 2.Kruskal(克鲁斯卡尔):找所有点之间的距离,把最短的距离两两相连,在把两个连好的看成一个点,再重复.(适合边少点多)
 
 --最短路径--
-指的是AB两点,带权路径最小的那条.
+最短路径:指的是AB两点,带权路径最小的那条.
+单源路径求(dijkstra):求A到[B,C,D]分别的最短距离,每一趟确定[B,C,D]其中一个,全部用最新的点跟原来的点比较.(不能有负的权值)
+多源头路径(floyd): 有点难,十字交叉法，从左上角到右下角,计算Ak就划掉第几行第几列.
+拓扑排序:算法(待写)
+
+
+--关键路径--
+关键路径:具有最大路径长度的路径.中间的活动称为关键活动.
+v(e)从前往后推,v(i)从后往前推. v(e) = v(i) 就是关键活动.
 
 
