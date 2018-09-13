@@ -1,0 +1,25 @@
+图的遍历
+--dfs迭代--
+"""按照二叉树的前序非递归遍历,就是多加一个visited标记判断."""
+  void dfs(Graph G,int v) {
+      int stack[500];
+      top = -1;
+
+      stack[++top] =v;
+
+      ArcNode* p=NULL;
+      while (p || !empty(stack)){
+          if (p){
+              n = p->adjvex;
+              if (visited[n]== 0)
+                  stack[++top] = n;
+              p = p->nextarc;
+          }
+          else{
+              n = stack[top--];
+              visit(n);
+              visited[n] =1;
+              p =  G.adjlist[n].firstarc;
+          }
+      }   
+  }
