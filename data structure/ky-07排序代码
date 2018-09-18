@@ -28,3 +28,19 @@ int InsertSort(int A[],int n){
         } 
     }
 }
+
+--希尔排序--
+int Shell(int A[],int n){
+    int low,mid,high;dk;
+    for(int dk = n/2,dk>1;dk = dk/2){ 
+        for(int i = dk+1; i<= n;i++){   /////!!!! 从这起 下面就是简单插入排序.
+            if (A[i]<A[i-dk]){
+                A[0] = A[i];
+                for(j = i-dk;j>0 && A[i]<A[j];j=j-dk)
+                    A[j+dk] = A[j];
+                A[j+dk] = A[0];
+            }
+
+        }
+    }
+}
